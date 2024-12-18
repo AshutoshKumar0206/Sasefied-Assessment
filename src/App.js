@@ -6,7 +6,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
 
-  const API_URL = "http://localhost:8000/tasks";
+  const API_URL = `${window.location.origin}/tasks`;
 
   //To fetch task from backend
   useEffect(() => {
