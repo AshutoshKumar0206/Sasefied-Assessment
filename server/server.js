@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = 8000;
+const path = require('path');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -27,6 +28,10 @@ app.post('/tasks', (req, res) => {
     }
   });
 
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});  
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log("Server is running");
 });
